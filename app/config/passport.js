@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-var GitHubStrategy = require('passport-github').Strategy;
-var User = require('../models/users');
-var configAuth = require('./auth');
+var GitHubStrategy = require("passport-github").Strategy;
+var User = require("../models/users");
+var configAuth = require("./auth");
 
 module.exports = function (passport) {
 	passport.serializeUser(function (user, done) {
@@ -22,7 +22,7 @@ module.exports = function (passport) {
 	},
 	function (token, refreshToken, profile, done) {
 		process.nextTick(function () {
-			User.findOne({ 'github.id': profile.id }, function (err, user) {
+			User.findOne({ "github.id": profile.id }, function (err, user) {
 				if (err) {
 					return done(err);
 				}
